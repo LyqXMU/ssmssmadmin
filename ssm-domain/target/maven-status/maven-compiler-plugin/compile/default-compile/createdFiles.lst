@@ -1,0 +1,4 @@
+com\lyq\domain\Orders.class
+com\lyq\domain\Product.class
+com\lyq\domain\Traveller.class
+com\lyq\domain\Member.class
