@@ -8,19 +8,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
     private IProductService productService;
+
+    @RequestMapping("/save.do")
+    public String save(Product product) {
+        System.out.println(product);
+        productService.save(product);
+        return "redirect:findAll.do";
+    }
     @RequestMapping("/findAll.do")
-    public ModelAndView findAll() {
+    public String findAll(Map<String, Object> map) {
         System.out.println("findAll");
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("product-list");
         List<Product> res = productService.findAll();
         System.out.println(res);
-        mv.addObject("productList", res);
-        return mv;
+        map.put("productList", res);
+        return "product-list";
     }
 }

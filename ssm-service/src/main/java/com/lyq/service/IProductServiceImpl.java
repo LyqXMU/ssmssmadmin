@@ -15,4 +15,9 @@ public class IProductServiceImpl implements IProductService {
     public List<Product> findAll() {
         return dao.findAll();
     }
+
+    @Override
+    public void save(Product product) {
+        dao.save(product);
+    }
 }
